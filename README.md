@@ -1,7 +1,7 @@
 # angular-dropdowns
 
 Forked from https://github.com/jseppi/angular-dropdowns
--Changed data types to have a simpler implementation. Options are an array of strings and the seleceted value is a string.
+Data types have been changed for a simpler implementation. Options are an array of strings and the seleceted value is a string.
 
 ## Usage
 
@@ -28,6 +28,6 @@ You can optionally set `dropdown-item-label` to specify a different label field 
 ```html
 
     <div dropdown-select="selectOptions" dropdown-model="yourModel.fieldName"></div>
-    
+
 ```
 
