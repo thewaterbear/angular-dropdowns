@@ -9,12 +9,11 @@ var dd = angular.module('ngDropdowns', []);
 dd.run(['$templateCache', function ($templateCache) {
   $templateCache.put('ngDropdowns/templates/dropdownSelect.html', [
     '<div class="wrap-dd-select">',
-      '<span class="selected">{{dropdownModel[labelField]}}</span>',
+      '<span class="selected">{{dropdownModel}}</span>',
       '<ul class="dropdown">',
         '<li ng-repeat="item in dropdownSelect"',
         ' class="dropdown-item"',
-        ' dropdown-select-item="item"',
-        ' dropdown-item-label="labelField">',
+        ' dropdown-select-item="item">',
         '</li>',
       '</ul>',
     '</div>'
@@ -26,7 +25,7 @@ dd.run(['$templateCache', function ($templateCache) {
       ' ng-if="!dropdownSelectItem.divider"',
       ' ng-href="{{dropdownSelectItem.href}}"',
       ' ng-click="selectItem()">',
-        '{{dropdownSelectItem[dropdownItemLabel]}}',
+        '{{dropdownSelectItem}}',
       '</a>',
     '</li>'
   ].join(''));
@@ -71,8 +70,10 @@ dd.directive('dropdownSelect', ['DropdownService',
         DropdownService.register($element);
 
         this.select = function (selected) {
+          console.log('selected! '+selected);
           if (selected !== $scope.dropdownModel) {
-            angular.copy(selected, $scope.dropdownModel);
+            console.log('string sssshas changed!', selected);
+            $scope.dropdownModel = selected;  
           }
           $scope.dropdownOnchange({
             selected: selected
